@@ -1,4 +1,18 @@
-name: Testing Automation Anypoint
+Skip to content
+ 
+Search…
+All gists
+Back to GitHub
+@Zupit92 
+@pedes
+pedes/automation.yml Secret
+Created 1 minute ago • Report abuse
+Code
+Revisions
+2
+<script src="https://gist.github.com/pedes/cafd8bfe09cc4ea39ad171e5ec2eabdc.js"></script>
+automation.yml
+  name: Testing Automation Anypoint
 
 # Controls when the workflow will run
 on:
@@ -30,13 +44,16 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-
       # maven build command, could add other flags if needed
       - name: Package Mule App (using Mule Maven Plugin)
         run: mvn -B clean package -DskipTests --file pom.xml
 
       - name: Install Anypoint CLI
         run: npm install -g anypoint-cli-v4
+        
+      # Automation using Any CLI
+      - name: Automation using Any CLI (show account info)
+        run: anypoint-cli-v4 account:user:describe --client_id e2f373ced659470f816a584f66e2f45b --client_secret Ad30f82a0d814a2fb8C2AF7Fb54aC2D0 -o json
 
       - name: Integration Testing ( Install BAT CLI)
         run: curl -o- 'https://s3.amazonaws.com/bat-wrapper/install.sh' | bash && echo Integration Testing Complete
@@ -49,3 +66,7 @@ jobs:
         uses: grafana/k6-action@v0.2.0
         with:
           filename: ./src/test/resources/performance/test.js  
+  
+  
+  
+
