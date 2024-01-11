@@ -1,18 +1,4 @@
-Skip to content
- 
-Search…
-All gists
-Back to GitHub
-@Zupit92 
-@pedes
-pedes/automation.yml Secret
-Created 1 minute ago • Report abuse
-Code
-Revisions
-2
-<script src="https://gist.github.com/pedes/cafd8bfe09cc4ea39ad171e5ec2eabdc.js"></script>
-automation.yml
-  name: Testing Automation Anypoint
+name: Testing Automation Anypoint
 
 # Controls when the workflow will run
 on:
